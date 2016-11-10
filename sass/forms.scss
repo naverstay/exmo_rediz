@@ -1,0 +1,334 @@
+.input_hidden {
+  display: none;
+}
+
+.select_menu {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.select_btn {
+  @include transition_all(background .3s, color .3s);
+  @extend %icon_pseudo;
+  @extend %no-user-select;
+  display: block;
+  font-size: 13px;
+  line-height: normal;
+  background: $white;
+  position: relative;
+  padding: 14px;
+  cursor: pointer;
+
+  .mb {
+    line-height: 1.2;
+  }
+
+  &._check {
+    @extend %icon_pseudo;
+    padding-right: 32px;
+
+    &:before {
+      display: none;
+      content: $i-checkmark2;
+      position: absolute;
+      top: 50%;
+      height: 22px;
+      right: 14px;
+      //color: $blue_lighten;
+      color: $white;
+      font-size: 26px;
+      line-height: 22px;
+      margin-top: -11px;
+      text-align: center;
+    }
+
+    &.checked {
+
+      &:before {
+        display: block;
+      }
+    }
+  }
+
+  &._disabled {
+    cursor: default;
+    background: $white;
+    color: #ccced2;
+  }
+}
+
+.drop_down-holder {
+  position: relative;
+}
+
+.drop_down-wrapper {
+  z-index: 5;
+  display: none;
+  position: absolute;
+  background: #f5f5f5;
+  border-radius: 2px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+  }
+
+  .opened > & {
+    display: block;
+  }
+
+  &._dd-w-252 {
+    width: 252px;
+  }
+
+  &._dd-w-215 {
+    width: 215px;
+  }
+
+  &._dd-w-115 {
+    width: 115px;
+  }
+
+  &._dd_under {
+    top: 100%;
+    margin-top: 16px;
+
+    &:after {
+      bottom: 100%;
+      border-bottom: 5px solid #f5f5f5;
+    }
+
+    &:before {
+      bottom: 100%;
+      margin-bottom: 1px;
+      border-bottom: 5px solid rgba(0, 0, 0, .3);
+    }
+  }
+
+  &._dd_under-v2 {
+    top: 100%;
+    margin-top: 7px;
+
+    &:after {
+      bottom: 100%;
+      border-bottom: 5px solid #f5f5f5;
+    }
+
+    &:before {
+      bottom: 100%;
+      margin-bottom: 1px;
+      border-bottom: 5px solid rgba(0, 0, 0, .3);
+    }
+  }
+
+  &._dd_left {
+    left: 0;
+
+    &:before {
+      left: 20px;
+    }
+
+    &:after {
+      left: 20px;
+    }
+  }
+
+  &._dd_above {
+    bottom: 100%;
+    margin-bottom: 16px;
+  }
+
+  &._dd_right {
+    right: 0;
+
+    &:before {
+      right: 20px;
+    }
+
+    &:after {
+      right: 20px;
+    }
+  }
+
+  &._dd_right-v2 {
+    right: 0;
+
+    &:before {
+      right: 13px;
+    }
+
+    &:after {
+      right: 13px;
+    }
+  }
+
+}
+
+.check_emul {
+
+  &.check-v1 {
+
+    .check_text {
+      @extend %icon_pseudo;
+      display: block;
+      position: relative;
+      padding-left: 24px;
+      cursor: pointer;
+      margin-bottom: 10px;
+
+      span {
+        padding-top: 4px;
+        //border-bottom: 1px dashed #9dbdfe;
+      }
+
+      &:before {
+        @include transition_all(border .3s, background .3s);
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 18px;
+        height: 18px;
+        border: 1px solid $blue_light_3;
+        font-size: 20px;
+        line-height: 16px;
+        margin-top: -9px;
+        border-radius: 2px;
+        text-align: center;
+        color: $white;
+      }
+
+      &:hover {
+        &:before {
+          border-color: $blue_btn_hover;
+        }
+      }
+    }
+
+    .input_hidden:checked + .check_text {
+
+      &:before {
+        background: $blue_light_3;
+        content: $i-checkmark2;
+      }
+    }
+
+    .input_hidden[disabled='disabled'] + .check_text {
+      color: #ccced2;
+      cursor: default;
+      pointer-events: none;
+
+      span {
+        border-bottom: none;
+      }
+
+      &:before {
+        content: '' !important;
+        background: #eaecf0 !important;
+        border-color: #eaecf0 !important;
+      }
+    }
+  }
+
+}
+
+.form_row {
+  @extend %clearfix;
+}
+
+.form_cell {
+  position: relative;
+
+}
+
+.input_w {
+  position: relative;
+}
+
+.f_input-currency {
+  @include transition_all(color .3s);
+  position: absolute;
+  top: 50%;
+  height: 20px;
+  right: 15px;
+  font: 12px/20px $GothamProMedium;
+  color: #858585;
+  margin-top: -10px;
+}
+
+.f_input {
+  display: block;
+  width: 100%;
+
+  &.f_input-v1 {
+    height: 44px;
+    border-radius: 5px;
+    font: 13px/14px $GothamProRegular;
+    padding: 14px 14px 14px 44px;
+    background: $white;
+    border: 1px solid #dce2e6;
+    color: $black;
+  }
+
+  &.f_input-v2 {
+    @include transition_all(color .3s, border .3s);
+    height: 40px;
+    border-radius: 5px;
+    font: 13px/16px $GothamProMedium;
+    padding: 11px 54px 11px 15px;
+    background: $white;
+    border: 1px solid #dce2e6;
+    color: $black;
+
+    &:focus {
+      border-color: $blue_light_3;
+      color: $blue_light_3;
+
+      + .f_input-currency {
+        color: $blue_light_3;
+      }
+    }
+
+    &[readonly='readonly'] {
+      background: #edeff2 !important;
+      border-color: #edeff2 !important;
+      color: $black !important;
+
+      + .f_input-currency {
+        color: #858585;
+      }
+    }
+  }
+}
+
+.form_title {
+  font: 14px $GothamProMedium;
+  color: $black;
+  background: #f7f7fa;
+  text-transform: uppercase;
+  padding: 13px 23px;
+}
+
+.form_inner {
+  padding: 10px 23px 24px;
+
+  .form_row {
+    line-height: 40px;
+    margin-top: 8px;
+  }
+}
+
+.w_120 {
+  width: 120px;
+}
+
+.w_245 {
+  width: 245px;
+}
+
+
+

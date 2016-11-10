@@ -1,47 +1,530 @@
 include mixins.pug
 doctype html
 html(lang='ru')
-    +dev_head('Sarah главная')
+    +dev_head('EXMO главная')
 
     body
         .wrapper
-            .rect_1024
+            //.rect_1024
             .base
-                div.header
-                    .section_inner.clearfix
-                        .logo_block
-                            a.logo(href='#')
-                                img(src='i/logo.png')
-
-                        .share_block
-                            .share_caption скидки на все туры
-                            .share_caption
-                                | скидки на все туры
-                                span.share_value 8%
-
-
-                        .header_partners_block
-                            .header_p_block_row При поддержке
-                            .header_p_block_row.mod_1 Клуба путешественников
-                            .header_p_block_row.mod_2 “Turtle-Traveller”
-
-
-                    ul.main_menu
-                        li.menu_item
-                            a.menu_link.bg_color_white_mod(href='#')
-                                span.link_text О нас
-                        li.menu_item
-                            a.menu_link.bg_color_blue_mod(href='#')
-                                span.link_text ОТЗЫВЫ
-                        li.menu_item
-                            a.menu_link.bg_color_orange_mod(href='#')
-                                span.link_text ЛУЧШИЕ ПРЕДЛОЖЕНИЯ
-                        
-
-
-
+                +header()
 
                 div.main_content
+                    input#lock_currency_pairs.input_hidden(type='checkbox' checked)
+                    .section_inner
+                        .title_holder
+                            .fl
+                                span.mb.block_tile Exchange
+                            .fr 
+                                ul.title_controls
+                                    li
+                                        .drop_down-holder.dropDownHolder
+                                            a.btn_v2.btn_blue_2.control_btn.dropDowBtn(href='#')
+                                                span.btn_icon.settings_icon
+                                            .drop_down-wrapper.dropDownWrapper._dd_left._dd_under._dd-w-215
+                                                ul.select_menu
+                                                    li: label.select_btn.selectBtn._check.checked.btn_white_blue(for='double_value_pairs') 
+                                                        span.mb Double value pairs
+                                                    li: label.select_btn.selectBtn._check.checked.btn_white_blue(for='lock_currency_pairs')
+                                                        span.mb Lock currency pairs <br> position on top
+                                                    li: a.select_btn.selectBtn.btn_white_gray(href='#') 
+                                                        span.mb Advanced Settings
+                                    li
+                                        a.btn_v2.btn_blue_2.control_btn(href='#')
+                                            //-span.btn_icon.trading_icon 
+                                            span.mb Advanced Trading 
+                                            
+                    //  Pairs
+                        
+                    .pair_sticker.stickMe
+                        .section_inner
+                            .pair_holder
+                                input#double_value_pairs.input_hidden(type='checkbox' checked)
+                                ul.pair_list
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name BTC/USD
+                                            .pair_cell.pair_val-1 804.0000
+                                            .pair_cell.pair_val-2 804.0000
+                                    li
+                                        .pair_item.active
+                                            .pair_cell.pair_name BTC/EUR
+                                            .pair_cell.pair_val-1 620.0000
+                                            .pair_cell.pair_val-2 622.0000
+                                                
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name BTC/RUB
+                                            .pair_cell.pair_val-1 38600
+                                            .pair_cell.pair_val-2 38622
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name DASH/BTC
+                                            .pair_cell.pair_val-1 0.0191299
+                                            .pair_cell.pair_val-2 0.0191299
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name DASH/USD
+                                            .pair_cell.pair_val-1 11.69
+                                            .pair_cell.pair_val-2 11.69
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name ETH/BTC
+                                            .pair_cell.pair_val-1 0.0220299
+                                            .pair_cell.pair_val-2 0.02191
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name ETH/USD
+                                            .pair_cell.pair_val-1 13.32
+                                            .pair_cell.pair_val-2 13.3
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name ETH/RUB
+                                            .pair_cell.pair_val-1 845.88
+                                            .pair_cell.pair_val-2 845.88
+                                                
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name DOGE/BTC
+                                            .pair_cell.pair_val-1 0.00000038
+                                            .pair_cell.pair_val-2 0.00000037
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name DOGE/RUB
+                                            .pair_cell.pair_val-1 0.01477858
+                                            .pair_cell.pair_val-2 0.01477858
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name LTC/BTC
+                                            .pair_cell.pair_val-1 0.00636998
+                                            .pair_cell.pair_val-2 0.00636998
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name LTC/RUB
+                                            .pair_cell.pair_val-1 245.8
+                                            .pair_cell.pair_val-2 245.01
+                                    li
+                                        .pair_item
+                                            .pair_cell.pair_name USD/RUB
+                                            .pair_cell.pair_val-1 63.53
+                                            .pair_cell.pair_val-2 63.53
+                    .stickSpacer
+                        
+                    .section_inner.clearfix
+                        .col._wide.fl
+                            .chart_holder._h-555.box_1
+                                img(src='i/chart_1.png')
+                                
+                        .col._narrow.fr
+                            +chat()
+                            
+                    // Orders section
+                            
+                    .section_inner.clearfix
+                        .col._wide.fl
+                            ul#orders_switch.tabSwitcher.tab_switcher
+                                li
+                                    a.tabBtn.tab_btn.box_title.ripple.doRipple(href='#orders_1') Limit Order
+                                li
+                                    a.tabBtn.tab_btn.box_title.ripple.doRipple(href='#orders_2') Instant Order
+                                li.tab_line.tabLine
+                                
+                            .tab_container.tabContainer(data-tab-context='#orders_switch')
+                                #orders_1.tab_box.box_2._split-mode
+                                    .order_form
+                                        form(action='#')
+                                            .form_title Sell
+                                            .form_inner
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='sell_order_amount') Amount
+                                                            
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#sell_order_amount.f_input.f_input-v2(value='2.30975574')
+                                                            span.f_input-currency BTC
+                                                        
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='sell_order_price') Price
+                                                            
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#sell_order_price.f_input.f_input-v2(value='448.212')
+                                                            span.f_input-currency USD
+                                                        
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='sell_order_total') Total
+                                                            
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#sell_order_total.f_input.f_input-v2(readonly='readonly' value='1035.26023974')
+                                                            span.f_input-currency USD
+                                                        
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='sell_order_commission') Commission
+                                                            
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#sell_order_commission.f_input.f_input-v2(readonly='readonly' value='0.00461951')
+                                                            span.f_input-currency BTC
+                                                        
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='sell_order_ballance') Available Balance
+                                                            
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#sell_order_ballance.f_input.f_input-v2(readonly='readonly' value='3475.260')
+                                                            span.f_input-currency USD
+                                                        
+                                                .form_row
+                                                    .fl.form_cell.w_120 &nbsp;
+                                                        
+                                                            
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            label.check_emul.check-v1.mb
+                                                                input.input_hidden(type='checkbox')
+                                                                span.check_text.fz_13
+                                                                    span.mb Использовать кредит
+                                                        
+                                                .form_row
+                                                    .fl.form_cell.w_120 &nbsp;
+                                                        
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            button.btn_v2.order_btn.btn_blue_2 Sell 2.30975574 BTC
+                                            
+                                    .order_form
+                                        form(action='#')
+                                            .form_title BUY
+                                            .form_inner
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='buy_order_amount') Amount
+
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#buy_order_amount.f_input.f_input-v2
+                                                            span.f_input-currency BTC
+
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='buy_order_price') Price
+
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#buy_order_price.f_input.f_input-v2
+                                                            span.f_input-currency USD
+
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='buy_order_total') Total
+
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#buy_order_total.f_input.f_input-v2(readonly='readonly' value='1035.26023974')
+                                                            span.f_input-currency USD
+
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='buy_order_commission') Commission
+
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#buy_order_commission.f_input.f_input-v2(readonly='readonly' value='0.00461951')
+                                                            span.f_input-currency BTC
+
+                                                .form_row
+                                                    .fl.form_cell.w_120
+                                                        label.mb.fw_md(for='buy_order_ballance') Available Balance
+
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            input#buy_order_ballance.f_input.f_input-v2(readonly='readonly' value='3475.260')
+                                                            span.f_input-currency USD
+                                                            
+                                                .form_row
+                                                    .fl.form_cell.w_120 &nbsp;
 
 
-            .footer
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            label.check_emul.check-v1.mb
+                                                                input.input_hidden(type='checkbox' disabled='disabled')
+                                                                span.check_text.fz_13
+                                                                    span.mb Использовать кредит
+
+                                                .form_row
+                                                    .fl.form_cell.w_120 &nbsp;
+
+                                                    .fl.form_cell.w_245
+                                                        .input_w
+                                                            button.btn_v2.order_btn.btn_blue_2(disabled='disabled') Buy BTC
+                                                            
+                                #orders_2.tab_box
+                                    
+                        // Orders
+                            
+                        .col._narrow.fr
+                            .box_title Active Orders
+                            .table_holder
+                                table.table-v1.table-s1
+                                    tr
+                                        th.col_1._sorted
+                                            .cell_inner Date
+                                        th.col_2
+                                            .cell_inner TYPE
+                                        th.col_3
+                                            .cell_inner Price
+                                        th.col_4
+                                            .cell_inner Quantity
+                                        th.col_5
+                                            .cell_inner Amount
+                                                
+                            .table_holder.scroll-v1.customScroll._h-370
+                                table.table-v1.table-s1.table_cell-rm_mode
+                                    +loop_while(3)
+                                        tr
+                                            td.col_1
+                                                .cell_inner 29.09 21:25
+                                            td.col_2
+                                                .cell_inner
+                                                    span.clr_blue_lighten Buy
+                                            td.col_3
+                                                .cell_inner 0.00909896
+                                            td.col_4
+                                                .cell_inner 109.641051
+                                            td.col_5
+                                                .cell_inner
+                                                    span 0.99761953
+                                                    a.table_rm_btn.btn_red(href='#')
+                                                        span.mb.btn_icon.rm_icon
+                                                        span.mb Delete
+                                
+                                        tr
+                                            td.col_1
+                                                .cell_inner 29.09 21:25
+                                            td.col_2
+                                                .cell_inner
+                                                    span.clr_red Sell
+                                            td.col_3
+                                                .cell_inner 0.00909896
+                                            td.col_4
+                                                .cell_inner 109.641051
+                                            td.col_5
+                                                .cell_inner
+                                                    span 0.99761953
+                                                    a.table_rm_btn.btn_red(href='#')
+                                                        span.mb.btn_icon.rm_icon
+                                                        span.mb Delete
+                                
+                                        tr
+                                            td.col_1
+                                                .cell_inner 29.09 21:25
+                                            td.col_2
+                                                .cell_inner
+                                                    span.clr_red Sell
+                                            td.col_3
+                                                .cell_inner 0.00909896
+                                            td.col_4
+                                                .cell_inner 109.641051
+                                            td.col_5
+                                                .cell_inner
+                                                    span 0.99761953
+                                                    a.table_rm_btn.btn_red(href='#')
+                                                        span.mb.btn_icon.rm_icon
+                                                        span.mb Delete
+
+                    // Trades
+                                                        
+                    .section_inner.clearfix
+                        
+                        // Glasses
+                        
+                        .col._wide.fl: .order_glass-holder
+                            .order_glass
+                                .box_title
+                                    .fl Sell Orders
+                                    .fr
+                                        span.order_glass-val.mb Value: 899247.82 DOGE
+                                        
+                                +glass()
+                                        
+                            .order_glass
+                                .box_title
+                                    .fl BUY ORDERS
+                                    .fr
+                                        span.order_glass-val.mb Value: 899247.82 DOGE
+                                        
+                                +glass()
+
+                        // Trade History
+                                
+                        .col._narrow.fr
+                            .box_title Trade History
+                            .table_holder.table_holder-v1
+                                .table_head
+                                    table.table-v1.table-s1
+                                        tr
+                                            th.col_1._sorted
+                                                .cell_inner Date
+                                            th.col_2
+                                                .cell_inner TYPE
+                                            th.col_3
+                                                .cell_inner Price
+                                            th.col_4
+                                                .cell_inner Quantity
+                                            th.col_5
+                                                .cell_inner Amount
+
+                            .table_holder._h-495.customScroll.scroll-v1
+                                table.table-v1.table-s1
+                                    +loop_while(5)
+                                        tr
+                                            td.col_1
+                                                .cell_inner 29.09 21:25
+                                            td.col_2
+                                                .cell_inner
+                                                    span.clr_blue_lighten Buy
+                                            td.col_3
+                                                .cell_inner 0.00909896
+                                            td.col_4
+                                                .cell_inner 109.641051
+                                            td.col_5
+                                                .cell_inner
+                                                    span 0.99761953
+                                
+                                        tr
+                                            td.col_1
+                                                .cell_inner 29.09 21:25
+                                            td.col_2
+                                                .cell_inner
+                                                    span.clr_red Sell
+                                            td.col_3
+                                                .cell_inner 0.00909896
+                                            td.col_4
+                                                .cell_inner 109.641051
+                                            td.col_5
+                                                .cell_inner
+                                                    span 0.99761953
+                                
+                                        tr
+                                            td.col_1
+                                                .cell_inner 29.09 21:25
+                                            td.col_2
+                                                .cell_inner
+                                                    span.clr_red Sell
+                                            td.col_3
+                                                .cell_inner 0.00909896
+                                            td.col_4
+                                                .cell_inner 109.641051
+                                            td.col_5
+                                                .cell_inner
+                                                    span 0.99761953
+                                                        
+                                                        
+                    // My History
+                                                        
+                    .section_inner.clearfix
+                        .box_title 
+                            .fl My History
+                            .fr
+                                .drop_down-holder.dropDownHolder
+                                    a.btn_v2.btn_blue_2.control_btn.dropDowBtn(href='#')
+                                        span.dropDownVal
+                                            span.mb 10
+                                        span.btn_icon.icon_drop_down
+                                    .drop_down-wrapper.dropDownWrapper._dd_right._dd_under
+                                        ul.select_menu._check-mode._single
+                                            li: a.select_btn.selectBtn.btn_white_blue._check.checked(href='')
+                                                span.mb 10
+                                            li: a.select_btn.selectBtn.btn_white_blue._check(href='')
+                                                span.mb 20
+                                            li: a.select_btn.selectBtn.btn_white_blue._check(href='')
+                                                span.mb 30
+                                
+                        .table_holder.scroll-v1
+                            table.table-v1.table-s3
+                                tr
+                                    th.col_1
+                                        .cell_inner Order ID
+                                    th.col_2._sorted
+                                        .cell_inner Date
+                                    th.col_3
+                                        .cell_inner Type
+                                    th.col_4
+                                        .cell_inner Amount
+                                    th.col_5
+                                        .cell_inner Price
+                                    th.col_6
+                                        .cell_inner Commission
+                                    th.col_7
+                                        .cell_inner CashBack
+                                    th.col_8
+                                        .cell_inner Total
+                                            
+                        .table_holder._h-412.customScroll.scroll-v1
+                            table.table-v1.table-s3
+                                +loop_while(5)
+                                    tr
+                                        td.col_1
+                                            .cell_inner 000000001
+                                        td.col_2
+                                            .cell_inner 
+                                                span.clr_gray 15.06, 
+                                                span 18:03
+                                        td.col_3
+                                            .cell_inner 
+                                                span.clr_blue_lighten Buy 
+                                        td.col_4
+                                            .cell_inner 639.69980805
+                                        td.col_5
+                                            .cell_inner 3.88685717
+                                        td.col_6
+                                            .cell_inner 0.0013005
+                                        td.col_7
+                                            .cell_inner 0.00005
+                                        td.col_8
+                                            .cell_inner 2486.42178
+                                                
+                                    tr
+                                        td.col_1
+                                            .cell_inner 000000001
+                                        td.col_2
+                                            .cell_inner 
+                                                span.clr_gray 15.06, 
+                                                span 18:03
+                                        td.col_3
+                                            .cell_inner 
+                                                span.clr_red Sell 
+                                        td.col_4
+                                            .cell_inner 639.69980805
+                                        td.col_5
+                                            .cell_inner 3.88685717
+                                        td.col_6
+                                            .cell_inner 0.0013005
+                                        td.col_7
+                                            .cell_inner 0.00005
+                                        td.col_8
+                                            .cell_inner 2486.42178
+                                                
+                    // pagination
+                                                
+                    .section_inner.clearfix
+                        ul.pagination_list
+                            li._first: a.gl_link(href='#') Previous page
+                            li: a.gl_link(href='#') 1
+                            li: a.gl_link.current(href='#') 2
+                            li: a.gl_link(href='#') 3
+                            li: span.gl_link() ...
+                            li: a.gl_link(href='#') 4
+                            li: a.gl_link(href='#') 5
+                            li: a.gl_link(href='#') 6
+                            li._last: a.gl_link(href='#') Next page
+                            
+
+            +footer()

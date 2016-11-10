@@ -8,13 +8,10 @@ mixin dev_head(page_title)
         meta(name="SKYPE_TOOLBAR", content="SKYPE_TOOLBAR_PARSER_COMPATIBLE")
         meta(name="apple-mobile-web-app-capable", content="yes")
         meta(name="format-detection", content="telephone=no")
-        link(rel='stylesheet', href='styles/lightbox.css', media='all')
         link(rel='stylesheet', href='styles/main_global.css', media='all')
-        link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,600&subset=latin,cyrillic', rel='stylesheet', type='text/css')
-        link(href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic&subset=latin,cyrillic', rel='stylesheet', type='text/css')
-        link(href='http://fonts.googleapis.com/css?family=Kelly+Slab&subset=latin,cyrillic', rel='stylesheet', type='text/css')
-        script(src='js/min/all.min.js')
-        script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true')
+        script(src='js/jquery1.10.js')
+        script(src='js/jquery.mCustomScrollbar.min.js')
+        script(src='js/jquery.mousewheel-3.0.6.min.js')
         script(src='js/script.js')
 
 mixin loop_while(counter)
@@ -23,3 +20,243 @@ mixin loop_while(counter)
         -i++;
         block
 
+mixin header(active)
+    .header
+        .section_inner.clearfix
+            .logo_block
+                a.logo(href='#')
+
+            ul.main_menu
+                li.main_m_item
+                    a.menu_link.bg_color_white_mod(href='#') Exchange
+                li.main_m_item
+                    a.menu_link.bg_color_blue_mod(href='#') Buy &amp; Sell
+                li.main_m_item
+                    a.menu_link.bg_color_orange_mod(href='#') Wallet
+                li.main_m_item
+                    a.menu_link.bg_color_orange_mod(href='#') Support &amp; Help
+
+            ul.user_menu
+                li.user_m_item.drop_down-holder.dropDownHolder
+                    a.btn_v1.btn_blue.menu_btn.dropDowBtn(href='#')
+                        span.mb 
+                            span.fz_14 Account value: 
+                            span.fz_13 4857,653 BTC
+                        span.btn_icon.icon_drop_down
+                    .drop_down-wrapper.dropDownWrapper._dd_right-v2._dd_under-v2._dd-w-252
+                        table.table-v2.table-s4
+                            tr
+                                th.col_1 &nbsp;
+                                th.col_2 Balance
+                                th.col_3 In Orders
+                            +loop_while(4)
+                                tr
+                                    td.col_1.clr_gray_2 USD
+                                    td.col_2 861000.99
+                                    td.col_3 3430.99
+                                tr
+                                    td.col_1.clr_gray_2 EUR
+                                    td.col_2 5.01
+                                    td.col_3 —
+                                    
+                        .account_balance-control
+                            a.btn_v2.btn_blue_2.control_btn(href='#')
+                                span.mb Recharge balance
+                    
+                li.user_m_item
+                    a.btn_v1.btn_blue.menu_btn(href='#')
+                        span.btn_icon.icon_mails
+                        span.msg_status._green
+                li.user_m_item
+                    a.btn_v1.btn_blue.menu_btn(href='#')
+                        span.mb Elon Musk
+                        span.btn_icon.icon_drop_down
+                        
+mixin chat()
+    .chat_holder._h-555.box_1
+        .chat_header
+            .fl
+                span.fw_md.fz_14.text_upper Traders chat
+            .fr
+                a.soundBtn.btn_v4.sound_btn(href='#')
+                    span.fz_12.btn_icon.sound_icon
+                    //-span.fz_12 Sound notifications
+
+        .chat_content.customScroll.scroll-v1
+            .chat_msg_list
+                +loop_while(2)
+                    .msg_unit
+                        span.msg_user_name
+                            span.clr_green Elon Mask: 
+                                        
+                        span.msg_text Нам очень нужен специалист по контактам с внеземными цивилизациями. Есть кто свободный?
+
+                    .msg_unit
+                        span.msg_user_name.clr_blue_lighten NASA: 
+                        span.msg_text.fw_md Илон, спроси у Марка. Он вроде как свободен сейчас.
+
+                    .msg_unit
+                        span.msg_user_name.dropDownHolder
+                            span.clr_blue_lighten.dropDowBtn Mark Watney: 
+                            .drop_down-wrapper.dropDownWrapper._dd_left._dd_under._dd-w-215
+                                ul.select_menu
+                                    li: a.select_btn.selectBtn.btn_white_blue(href='#')
+                                        span.mb Reply
+                                    li: a.select_btn.selectBtn.btn_white_blue(href='#')
+                                        span.mb Private message
+                                    li: a.select_btn.selectBtn.btn_white_blue(href='#')
+                                        span.mb Mark as spam
+                                        
+                        span.msg_text Отвалите все! Меня уже однажды забыли на Марсе
+
+                    .msg_unit._warning
+                        span.msg_user_name.clr_red Галактический сенат:  
+                        span.msg_text Пользователь NASA заблокирован. Срок блокировки — 10 лет стандартного галактического времени.
+
+                    .msg_unit
+                        span.msg_user_name.clr_green Elon Mask: 
+                        span.msg_text Нам очень нужен специалист по контактам с внеземными цивилизациями. Есть кто свободный?
+
+                    .msg_unit
+                        span.msg_user_name.clr_blue_lighten NASA: 
+                        span.msg_text.fw_md Илон, спроси у Марка. Он вроде как свободен сейчас.
+
+                    .msg_unit
+                        span.msg_user_name.clr_blue_lighten Mark Watney: 
+                        span.msg_text Отвалите все! Меня уже однажды забыли на Марсе
+
+        .chat_footer
+            form(action='#')
+                .form_cell
+                    input.f_input.f_input-v1
+                    button.msg_btn
+
+mixin glass()
+    .table_holder.table_holder-v1
+        table.table-v1.table-s2.table_cell-v1
+            tr
+                th.col_1._sorted
+                    .cell_inner Order Price
+                th.col_2
+                    .cell_inner DOGE
+                th.col_3
+                    .cell_inner RUB
+                        
+    .table_holder._h-495.customScroll.scroll-v1
+        table.table-v1.table-s2.table_cell-v1
+            +loop_while(5)
+                tr
+                    td.col_1
+                        .cell_inner 0.00909896
+                    td.col_2
+                        .cell_inner 5990.22167
+                    td.col_3
+                        .cell_inner 54.5047874
+
+            +loop_while(2)
+                tr._old
+                    td.col_1
+                        .cell_inner 0.0090
+                    td.col_2
+                        .cell_inner 50.22
+                    td.col_3
+                        .cell_inner 54.504
+
+            tr._actual
+                td.col_1
+                    .cell_inner 0.00909896
+                td.col_2
+                    .cell_inner 5990.22167
+                td.col_3
+                    .cell_inner 54.5047874
+
+            +loop_while(8)
+                tr
+                    td.col_1
+                        .cell_inner 0.009098
+                    td.col_2
+                        .cell_inner 5990.221
+                    td.col_3
+                        .cell_inner 54.504
+                    
+mixin footer()
+    .footer
+        .footer_menu-w
+            .section_inner.clearfix
+                ul.footer_menu-list
+                    li.footer_menu-col
+                        .fz_16.fw_md.text_upper Company
+                        ul.footer-menu
+                            li: a.gl_link(href='#') About Us
+                            li: a.gl_link(href='#') News
+                            li: a.gl_link(href='#') Fees
+                            li: a.gl_link(href='#') Contact Us
+                    li.footer_menu-col
+                        .fz_16.fw_md.text_upper Products
+                        ul.footer-menu
+                            li: a.gl_link(href='#') About Us
+                            li: a.gl_link(href='#') News
+                            li: a.gl_link(href='#') Fees
+                            li: a.gl_link(href='#') Contact Us
+                            
+                    li.footer_menu-col
+                        .fz_16.fw_md.text_upper Legal Documents
+                        ul.footer-menu
+                            li: a.gl_link(href='#') Terms and Conditions
+                            li: a.gl_link(href='#') AML
+                            li: a.gl_link(href='#') Privacy Policy
+                            
+                    li.footer_menu-col
+                        .fz_16.fw_md.text_upper For Developers
+                        ul.footer-menu
+                            li: a.gl_link(href='#') Public API
+                            li: a.gl_link(href='#') Push API
+                            li: a.gl_link(href='#') Trade API
+                      
+                    li.footer_menu-col
+                        .fz_16.fw_md.text_upper LEARN MORE
+                        ul.footer-menu
+                            li: a.gl_link(href='#') Support
+                            li: a.gl_link(href='#') FAQ
+                            li: a.gl_link(href='#') Affiliate Program
+                        
+            
+        .footer-bottom
+            .section_inner.clearfix
+                a.go_top.goTopBtn(href='#')
+
+                .copyright
+                    .copyright-text
+                        | All rights reserved, 
+                        span.fw_md EXMO FINANCE LLP, 
+                        |  2016 <br>
+                        a.gl_link.white_link(href='#') Bitcoin Foundation
+                        |  
+                        |  Member
+
+                ul.footer-share
+                    li
+                        a.btn_v3.share_btn(href='#') 
+                            span.sh_icon.icon_tw
+                            span.mb.share_text
+                                span.fw_md Follow us on Twitter 
+                                | <br>
+                                span 904 followers
+                                
+                    li
+                        a.btn_v3.share_btn(href='#') 
+                            span.sh_icon.icon_vk
+                            span.mb.share_text
+                                span.fw_md Read us on VK
+                                | <br>
+                                span 27084 now with us
+                                
+                    li
+                        a.btn_v3.share_btn(href='#') 
+                            span.sh_icon.icon_fb
+                            span.mb.share_text
+                                span.fw_md Like us on Facebook
+                                | <br>
+                                span 3405 now with us
+                                
+                                

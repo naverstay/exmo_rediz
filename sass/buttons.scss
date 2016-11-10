@@ -1,27 +1,352 @@
 //************  buttons
 
 .btn_v1 {
-  height: 50px;
+  height: 30px;
 
-  &.callback_btn {
+  &.menu_btn {
     cursor: pointer;
-    border-radius: 25px;
-    padding: 16px 24px;
-    font-weight: 500;
-    
-    &:before {
-      font-size: 18px;
-    }
-    
+    display: block;
+    position: relative;
+    padding: 5px 14px;
+    font-size: 14px;
+    line-height: 22px;
   }
 
 }
 
-.green_btn {
-  color: #fff;
+.btn_v2 {
+  height: 40px;
+
+  &.control_btn {
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding: 10px 24px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &.order_btn {
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    text-align: center;
+    padding: 10px 24px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &[disabled='disabled'] {
+    pointer-events: none;
+    cursor: default;
+    background: #eaecf0 !important;
+    color: #ccced2 !important;
+  }
+
+}
+
+.btn_v3 {
+  height: 80px;
+
+  &.share_btn {
+    display: block;
+    white-space: nowrap;
+    color: $white;
+  }
+}
+
+.btn_v4 {
+  height: 20px;
+
+  &.sound_btn {
+    @include transition_all(color .3s);
+    display: block;
+    text-align: center;
+    line-height: 20px;
+    color: $default_t_color;
+
+    &:hover {
+      color: $blue_lighten;
+    }
+  }
+}
+
+.sh_icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 22px 0 40px;
+
+  height: 20px;
+  width: 20px;
+
+  background: red;
+
+  &.icon_tw {
+
+  }
+}
+
+.share_text {
+  white-space: normal;
+  line-height: 1.5;
+}
+
+.btn_white_blue {
+  @include transition_all(background .3s);
+  color: $default_t_color;
+  background: $white;
+  
+  &:hover {
+    background: $blue_lighten;
+    color: $white;
+  }
+
+  &.checked {
+    background: $blue_lighten;
+    color: $white;
+  }
+}
+
+.btn_white_gray {
+  @include transition_all(background .3s);
+  background: $white;
+  color: $default_t_color;
+
+  &:hover {
+    background: #fcfcfc;
+  }
+}
+
+.btn_blue {
+  @include transition_all(background .3s);
+  color: $white;
+  background: $blue;
+
+  .opened &,
+  &:hover {
+    background: $blue_dark;
+
+    .msg_status {
+      border-color: $blue_dark;
+    }
+  }
+
+  &:active {
+    background: $blue_btn_active;
+  }
+}
+
+.btn_blue_2 {
+  @include transition_all(background .3s);
+  color: $white;
+  background: $blue_btn;
+
+  &:hover {
+    background: $blue_btn_hover;
+  }
+
+  &:active {
+    background: $blue_btn_active;
+  }
 }
 
 .btn_red {
-  color: #fff;
-  background: #f46b65;
+  @include transition_all(background .3s, color .3s);
+  color: $white;
+  background: $red_light;
+
+  &:hover {
+    background: $red;
+  }
+
+}
+
+.btn_icon {
+  @extend %icon_pseudo;
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  margin-left: 12px;
+
+  &:first-child {
+    margin-left: 0;
+    margin-right: 12px;
+  }
+
+  &.icon_drop_down {
+    width: 18px;
+    margin-right: -7px;
+
+    &:before {
+      font-size: 18px;
+      line-height: 18px;
+      content: $i-downarrow;
+    }
+
+    .opened & {
+      &:before {
+        content: $i-uparrow;
+      }
+    }
+  }
+
+  &.trading_icon {
+    width: 18px;
+
+    &:before {
+      content: $i-terminal;
+      font-size: 32px;
+      line-height: 20px;
+      font-weight: 600;
+    }
+  }
+
+  &.icon_mails {
+    width: 18px;
+    margin: 0 -7px;
+
+    &:before {
+      font-size: 24px;
+      line-height: 24px;
+      content: $i-email;
+    }
+  }
+
+  &.settings_icon {
+    margin: 0 -9px;
+
+    &:before {
+      content: $i-options;
+      font-size: 26px;
+      line-height: 20px;
+    }
+  }
+
+  &.sound_icon {
+    width: 18px;
+    margin-right: 0;
+
+    &:before {
+      content: $i-sound_on;
+      font-size: 26px;
+      line-height: 22px;
+    }
+
+    ._no-sound & {
+      &:before {
+        content: $i-sound_off;
+      }
+    }
+  }
+
+  &.rm_icon {
+    margin-right: 4px;
+
+    &:before {
+      content: $i-close;
+      font-size: 16px;
+      line-height: 18px;
+      font-weight: 600;
+    }
+  }
+
+}
+
+.msg_status {
+  @include transition_all(background .3s, border .3s);
+  position: absolute;
+  top: 9px;
+  right: 6px;
+  z-index: 1;
+  border-radius: 100%;
+  width: 6px;
+  height: 6px;
+  border: 1px solid $blue;
+  background: $gray_dark;
+
+  &._green {
+    background: #92ff8a;
+  }
+}
+
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+  }
+}
+
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+  }
+}
+
+@-moz-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+  }
+}
+
+@-ms-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+  }
+}
+
+@-o-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+  }
+}
+
+.ripple {
+  @include transform_translate(0);
+  position: relative;
+  overflow: hidden;
+}
+
+/* параметры визуального элемента эффекта */
+.effect {
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  /* абсолютно круглый */
+  border-radius: 50%;
+  /* Увеличение или уменьшение размера элемента */
+  transform: scale(0);
+  /* располагаем выше других объектов веб-страницы */
+  z-index: 9999;
+  /* цвет фона элемента */
+  background: rgba(247, 247, 250, .7);
+  /* не прозрачный */
+  opacity: 1;
+}
+
+/* имя, длительность и изменение скорости анимации */
+.effect.replay {
+  -webkit-animation: ripple 2s cubic-bezier(0.165, 0.85, 0.45, 1);
+  -o-animation: ripple 2s cubic-bezier(0.165, 0.85, 0.45, 1);
+  animation: ripple 2s cubic-bezier(0.165, 0.85, 0.45, 1);
 }

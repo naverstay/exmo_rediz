@@ -1,16 +1,19 @@
 @import "includes/global_var";
 @import "reset";
-//@import "fonts";
+@import "fonts";
+@import "jquery.mCustomScrollbar";
 //@import "jquery.ui.all";
 //@import "datapicker";
 //@import "dialog_global";
 @import "font_icons";
-@import "../air_icons/style";
+@import "../exmo_icons/style";
 
 @import "main";
 @import "header";
 @import "forms";
-@import "buttons";
 @import "tables";
+@import "buttons";
 @import "footer";
-//@import "print";
+
+
+@import "trades";

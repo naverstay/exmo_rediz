@@ -3,10 +3,44 @@ $square_root_of_2: 1.41421356237;
 
 $resp_step_2: 1040px;
 
-$content-max-w: 1440px;
+$content-max-w: 1360px;
 
 $icomoon-font-path: "../fonts";
-$icomoon-font-name: 'air_icons';
+$icomoon-font-name: 'exmo_icons';
+
+$blue_lighten: #4f8ffa;
+$blue_light: #488bfa;
+$blue_light_2: #4080ff;
+$blue_light_3: #2b8af1;
+$blue_light_4: #9dbdfe;
+$blue: #3261af;
+$blue_dark: #23447a;
+
+$blue_btn : #488bfa;
+$blue_btn_hover : #4897ff;
+$blue_btn_active : #4080ff;
+
+$green: #00bf89;
+
+$pink_light: #f5dfe9;
+$pink: #ff7ca8;
+
+$red_light: #f40856;
+$red: #ff085a;
+
+$gray_light: #edeff2;
+$gray_light_2: #f1f5fc;
+$gray_light_3: #ebedf0;
+$gray_light_4: #f5f7fa;
+$gray: #dce2e6;
+$gray_dark: #a1a1a1;
+
+$black: #181818;
+
+$white: #fff;
+
+$GothamProRegular: 'GothamProRegular', sans-serif;
+$GothamProMedium: 'GothamProMedium', sans-serif;
 
 $Roboto: 'Roboto', sans-serif;
 $CirceBold: 'CirceBold', sans-serif;
@@ -27,7 +61,7 @@ $cross_font_TimesNewRoman: 'Times New Roman', 'Times CY', 'Nimbus Roman No9 L', 
 $cross_font_TrebuchetMS: 'Trebuchet MS', 'Helvetica CY', sans-serif;
 $cross_font_Verdana: Verdana, 'Geneva CY', 'DejaVu Sans', sans-serif;
 
-$default_t_color: #4a5669;
+$default_t_color: #181818;
 $placeholder_color: #ccc;
 
 @mixin opacity($val : 1, $important : 0) {
@@ -995,6 +1029,119 @@ $placeholder_color: #ccc;
   background-position: (-$spacelength) 0, 0 (-$spacelength), (-$spacelength) 100%, 100% (-$spacelength);
   background-size: ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength), ($dashlength + $spacelength) $borderwidth, $borderwidth ($dashlength + $spacelength);
   background-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+}
+
+@import "compass/utilities/sprites"; // Include compass sprite helpers
+@import "compass/css3/background-size"; // Include helper to calc background size
+
+//  sprites with padding
+$icons: sprite-map("icons/*.png", $spacing: 10px);
+$icons2x: sprite-map("icons@2x/*.png", $spacing: 20px);
+
+// sized sprites
+@mixin image-size($path) {
+  width: image-width($path);
+  height: image-height($path);
+}
+
+@mixin sized-sprite($map, $sprite) {
+  background: sprite($map, $sprite) no-repeat;
+  @include image-size(sprite-file($map, $sprite));
+}
+
+//shortcut
+@mixin s($sprite, $map: $icons) {
+  background: sprite($map, $sprite) no-repeat;
+  //background-image: inline-image('icons/'+$sprite+'.png','image/png'); to switches sprites to base64, elegant
+  @include image-size(sprite-file($map, $sprite));
+}
+
+//only position of sprite, to remove flicker effect in chrome
+@mixin sp($sprite, $map: $icons) {
+  background-position: sprite-position($map, $sprite);
+}
+
+//only image, when dimensions are useless
+@mixin si($sprite, $map: $icons) {
+  background: sprite($map, $sprite) no-repeat;
+}
+
+// insert svg
+@mixin svg($name, $width, $height) {
+  background: url('../img/svg/#{$name}.svg') no-repeat 0 0;
+  @include background-size(#{$width}px #{$height}px);
+  // background-image: inline-image('svg/#{$name}.svg','image/svg');
+  width: #{$width}px;
+  height: #{$height}px;
+  display: inline-block;
+}
+
+// Retina Sprite
+
+@mixin sr($name, $hover: false, $active: false) {
+  @include _retina-sprite($name, $icons, $icons2x, $hover, $active);
+}
+
+// The general purpose retina sprite mixin.
+//
+// @include retina-sprite(name, $spritemap1, $spritemap2)
+// @include retina-sprite(name, $spritemap1, $spritemap2[, $dimensions: true, $pad: 0])
+//
+// If `dimensions` is true, then width/height will also be set.
+//
+// if `pad` is non-zero, then that's how much padding the element will have (requires
+// $spacing on the sprite maps). Great for iPhone interfaces to make hit areas bigger.
+@mixin _retina-sprite($name, $sprites, $sprites2x, $hover, $active, $dimensions: true, $pad: 0) {
+  @if $dimensions == true {
+    @include sprite-dimensions($sprites, $name);
+  }
+  background-image: sprite-url($sprites);
+  background-position: sprite-position($sprites, $name, -$pad, -$pad);
+  background-repeat: no-repeat;
+
+  @if $hover == true {
+    $name_hover: $name + _hover;
+    &:hover {
+      background-position: sprite-position($sprites, $name_hover, -$pad, -$pad);
+    }
+  }
+  @if $active == true {
+    $name_active: $name + _active;
+    &:active {
+      background-position: sprite-position($sprites, $name_active, -$pad, -$pad);
+    }
+  }
+
+  @if $pad > 0 {
+    padding: $pad;
+  }
+
+  //@media (-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+    & {
+      $pos: sprite-position($sprites2x, $name, -$pad * 2, -$pad * 2);
+      background-image: sprite-url($sprites2x);
+      background-position: nth($pos, 1) / 2 nth($pos, 2) / 2;
+      @include background-size(ceil(image-width(sprite-path($sprites2x)) / 2) auto);
+      //  sprite-path() returns the path of the generated sprite sheet, which
+      //  image-width() calculates the width of. the ceil() is in place in case
+      //  you have sprites that have an odd-number of pixels in width
+      @if $hover == true {
+        $name_hover: $name + _hover; // create myButton_hover and assign it
+        &:hover {
+          $pos: sprite-position($sprites2x, $name_hover, -$pad * 2, -$pad * 2);
+          background-position: nth($pos, 1) / 2 nth($pos, 2) / 2;
+        }
+      }
+      @if $active == true {
+        $name_active: $name + _active; // create myButton_active and assign it
+        &:active {
+          $pos: sprite-position($sprites2x, $name_active, -$pad * 2, -$pad * 2);
+          background-position: nth($pos, 1) / 2 nth($pos, 2) / 2;
+        }
+      }
+    }
+  }
 }
 
 @import "extends";

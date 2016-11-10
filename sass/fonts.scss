@@ -1,10 +1,19 @@
 @font-face {
-  font-family: 'CirceBold';
-  src:  url(../fonts/Circe-Bold.eot);
-  src:  url(../fonts/Circe-Bold.eot?#iefix) format("embedded-opentype"),
-        url(../fonts/Circe-Bold.woff) format("woff"),
-        url(../fonts/Circe-Bold.ttf) format("truetype"),
-        url(../fonts/Circe-Bold.svg) format("svg");
+  font-family: 'GothamProMedium';
+  src: url(../fonts/GothamProMedium.eot);
+  src: url(../fonts/GothamProMedium.eot?#iefix) format("embedded-opentype"),
+  url(../fonts/GothamProMedium.woff) format("woff"),
+  url(../fonts/GothamProMedium.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamProRegular';
+  src: url(../fonts/GothamProRegular.eot);
+  src: url(../fonts/GothamProRegular.eot?#iefix) format("embedded-opentype"),
+  url(../fonts/GothamProRegular.woff) format("woff"),
+  url(../fonts/GothamProRegular.ttf) format("truetype");
   font-weight: normal;
   font-style: normal;
 }

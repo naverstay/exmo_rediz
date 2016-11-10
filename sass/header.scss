@@ -5,26 +5,26 @@
   top: 0;
   right: 0;
   left: 0;
-  line-height: 100px;
+  line-height: 50px;
+  padding: 25px 0;
+  background: $blue_light;
 
   .section_inner {
-    padding: 0 25px;
+    margin-bottom: 0;
   }
 }
 
 .logo_block {
   float: left;
-  padding-left: 10px;
+  padding-right: 55px;
 }
 
 .logo {
   position: relative;
-  display: block;
-
-  img {
-    display: block;
-    width: 100%;
-  }
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 5px;
+  @include sr(logo);
 }
 
 .lang_switcher {
@@ -39,19 +39,53 @@
 // *********  menu
 
 .main_menu {
+  float: left;
+  font-size: 0;
 }
 
-.menu_item {
-  float: left;
-  margin: 0 17px;
+.main_m_item {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 49px;
 }
 
 .menu_link {
   cursor: pointer;
   position: relative;
   display: block;
-  padding-left: 32px;
+  color: #fff;
+  font-size: 16px;
   text-decoration: none;
+}
+
+.user_menu {
+  float: right;
+  font-size: 0;
+}
+
+.user_m_item {
+  display: inline-block;
+  vertical-align: middle;
+  padding-left: 1px;
+
+  &:first-child {
+    border-radius: 14px 0 0 14px;
+  }
+
+  &:last-child {
+    border-radius: 0 14px 14px 0;
+  }
+
+  a {
+    border-radius: inherit;
+  }
 
 }
 
+.account_balance {
+
+  &-control {
+    padding: 5px;
+  }
+
+}

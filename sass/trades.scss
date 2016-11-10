@@ -1,0 +1,179 @@
+
+.chart_holder {
+  float: left;
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+.chat_holder {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 66px;
+}
+
+.msg_unit {
+  border: 1px solid #dce2e6;
+  background: #fff;
+  border-radius: 2px;
+  padding: 10px 10px 8px;
+  font-size: 13px;
+  line-height: 1.33;
+  margin-top: 8px;
+  position: relative;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &._warning {
+    border-color: $red;
+  }
+}
+
+.msg_user_name {
+  cursor: pointer;
+  position: relative;
+  font-family: $GothamProMedium;
+}
+
+.msg_text {
+  color: $black;
+}
+
+.chat_content {
+  height: 100%;
+}
+
+.chat_msg_list {
+  padding: 10px;
+}
+
+.chat_header {
+  @extend %clearfix;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: #f1f5fc;
+  border-bottom: 1px solid #dce2e6;
+  padding: 10px 15px;
+  line-height: 18px;
+}
+
+.chat_footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #f7f7fa;
+  padding: 10px;
+  border-top: 1px solid #e9ecef;
+
+}
+
+.msg_btn {
+  @extend %icon_pseudo;
+  position: absolute;
+  left: 5px;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  background: none;
+  text-align: center;
+  color: $blue_light;
+  
+  &:before {
+    content: $i-chat_refresh;
+    font-size: 46px;
+    line-height: 40px;
+  }
+
+}
+
+.tab_switcher {
+  @extend %clearfix;
+  position: relative;
+
+  > li {
+    float: left;
+  }
+
+  .tab_btn {
+    @include transition_all(color .3s);
+    cursor: pointer;
+    padding-left: 25px;
+    padding-right: 25px;
+    color: #858585;
+
+    &:before {
+   
+    }
+
+    &:hover {
+      color: $default_t_color;
+    }
+
+    &.active {
+      cursor: default;
+      color: $default_t_color;
+
+      &:before {
+      }
+    }
+  }
+}
+
+.tab_line {
+  @include transition_all(width .3s, left .3s);
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: $blue_light_2;
+}
+
+.tab_box {
+  @extend %clearfix;
+  position: relative;
+
+  &._split-mode {
+    &:before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #eaecf0;
+    }
+  }
+}
+
+.order_form {
+  float: left;
+  width: 50%;
+}
+
+.order_glass {
+  float: left;
+  width: 50%;
+  margin-bottom: 50px;
+  padding-right: 22px;
+
+  &-holder {
+    @extend %clearfix;
+    margin-right: -1%;
+  }
+
+  &-val {
+    font-size: 13px;
+    color: #858585;
+    text-transform: none;
+  }
+
+}
