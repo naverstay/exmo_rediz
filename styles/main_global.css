@@ -3,7 +3,7 @@
 
 .title_holder:after, .pair_list:after, .pagination_list:after, .form_row:after, .footer_menu-list:after, .box_title:after, .chat_header:after, .tab_switcher:after, .tab_box:after, .order_glass-holder:after { position: static; display: block; height: 0; clear: both; content: ""; visibility: hidden; }
 
-.pair_sticker { -webkit-transform: translateZ(0); -moz-transform: translateZ(0); transform: translateZ(0); -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; backface-visibility: hidden; }
+.pair_sticker, .header { -webkit-transform: translateZ(0); -moz-transform: translateZ(0); transform: translateZ(0); -webkit-transform-style: preserve-3d; -moz-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; backface-visibility: hidden; }
 
 .select_btn { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; -o-user-select: none; user-select: none; }
 
@@ -763,7 +763,10 @@ body { font: 14px/1.2 "GothamProRegular", sans-serif; color: #181818; min-width:
 
 .title_controls > li { float: left; padding-left: 8px; }
 
-#lock_currency_pairs:checked ~ .pair_sticker.sticked { position: fixed; top: 50px; right: 0; left: 0; z-index: 10; background: #fff; }
+.stick_spacer { position: relative; }
+
+.pair_sticker { position: absolute; top: 0; left: 0; width: 100%; }
+#lock_currency_pairs:checked ~ .stick_spacer .pair_sticker.sticked { position: fixed; top: 50px; right: 0; left: 0; z-index: 10; background: #fff; }
 
 .pair_holder { overflow: hidden; }
 

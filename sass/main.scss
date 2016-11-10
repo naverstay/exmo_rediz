@@ -97,12 +97,20 @@ body {
   }
 }
 
+.stick_spacer {
+  position: relative;
+}
+
 .pair_sticker {
   @extend %translate3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 
   &.sticked {
 
-    #lock_currency_pairs:checked ~ & {
+    #lock_currency_pairs:checked ~ .stick_spacer & {
       position: fixed;
       top: 50px;
       right: 0;

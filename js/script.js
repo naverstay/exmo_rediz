@@ -7,6 +7,8 @@ $(function ($) {
     html = $('html');
     header = $('.header');
 
+    checkStickers();
+
     $('body').delegate('.dropDowBtn', 'click', function () {
         var dd = $(this).closest('.dropDownHolder');
 
@@ -20,8 +22,13 @@ $(function ($) {
 
         select_item.toggleClass('checked');
 
-        if (select_item.attr('data-click') != void 0) {
-            $(select_item.attr('data-click')).click();
+        if (select_item.attr('data-check') != void 0) {
+            var chk = $(select_item.attr('data-check'));
+
+            if (chk.length) {
+                chk.prop('checked', !chk.prop('checked'));
+                checkStickers();
+            }
         }
 
         if (select_item.closest('.select_menu._single').length) {
@@ -149,27 +156,27 @@ function checkStickers() {
 
     var scrollTop = doc.scrollTop();
     var scrollLeft = doc.scrollLeft();
+    var headerHeight = header.outerHeight();
 
     html.toggleClass('header-small', scrollTop >= 50);
 
-    $('.stickMe').each(function (ind) {
-        var el = $(this), spacer = el.next('.stickSpacer');
+    $('.stickSpacer').each(function (ind) {
+        var spacer = $(this), el = spacer.find('.stickMe');
 
-        if (el.offset().top < scrollTop) {
+        spacer.css('height', el.outerHeight());
+
+        console.log(spacer.offset().top <= (scrollTop + headerHeight));
+        
+        if (spacer.offset().top <= (scrollTop + headerHeight)) {
             el.addClass('sticked').css('width', spacer.outerWidth());
-            spacer.css('height', el.outerHeight());
-        }
-
-        if (spacer.offset().top >= scrollTop) {
+        } else {
             el.removeClass('sticked').css({
                 'marginLeft': 0,
                 'marginRight': 0,
                 'width': null
             });
-            spacer.css('height', 0);
         }
     });
-
 
     $('.sticked').css({
         'marginLeft': (scrollLeft > 0 ? -scrollLeft : 0),

@@ -23,9 +23,9 @@ html(lang='ru')
                                                 span.btn_icon.settings_icon
                                             .drop_down-wrapper.dropDownWrapper._dd_left._dd_under._dd-w-215
                                                 ul.select_menu
-                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-click='#double_value_pairs' href='#') 
+                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#double_value_pairs' href='#') 
                                                         span.mb Double value pairs
-                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-click='#lock_currency_pairs' href='#')
+                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#lock_currency_pairs' href='#')
                                                         span.mb Lock currency pairs <br> position on top
                                                     li: a.select_btn.selectBtn.btn_white_gray(href='#') 
                                                         span.mb Advanced Settings
@@ -36,7 +36,7 @@ html(lang='ru')
                                             
                     //  Pairs
                         
-                    .pair_sticker.stickMe
+                    .stickSpacer.stick_spacer: .pair_sticker.stickMe
                         .section_inner
                             .pair_holder
                                 input#double_value_pairs.input_hidden(type='checkbox' checked)
@@ -108,7 +108,6 @@ html(lang='ru')
                                             .pair_cell.pair_name USD/RUB
                                             .pair_cell.pair_val-1 63.53
                                             .pair_cell.pair_val-2 63.53
-                    .stickSpacer
                         
                     .section_inner.clearfix
                         .col._wide.fl

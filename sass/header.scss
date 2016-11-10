@@ -1,6 +1,7 @@
 //*************************** header
 
 .header {
+  @extend %translate3d;
   z-index: 11;
   position: fixed;
   top: 0;
