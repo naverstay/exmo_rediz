@@ -11,7 +11,7 @@ html(lang='ru')
 
                 div.main_content
                     input#lock_currency_pairs.input_hidden(type='checkbox' checked)
-                    .section_inner
+                    .section_inner.sticked_section
                         .title_holder
                             .fl
                                 span.mb.block_tile Exchange
@@ -23,9 +23,9 @@ html(lang='ru')
                                                 span.btn_icon.settings_icon
                                             .drop_down-wrapper.dropDownWrapper._dd_left._dd_under._dd-w-215
                                                 ul.select_menu
-                                                    li: label.select_btn.selectBtn._check.checked.btn_white_blue(for='double_value_pairs') 
+                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-click='#double_value_pairs' href='#') 
                                                         span.mb Double value pairs
-                                                    li: label.select_btn.selectBtn._check.checked.btn_white_blue(for='lock_currency_pairs')
+                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-click='#lock_currency_pairs' href='#')
                                                         span.mb Lock currency pairs <br> position on top
                                                     li: a.select_btn.selectBtn.btn_white_gray(href='#') 
                                                         span.mb Advanced Settings

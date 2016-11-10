@@ -48,7 +48,12 @@ body {
 }
 
 .main_content {
+  @include transition_all(padding .3s);
   padding: 50px 0;
+
+  .header-small & {
+    padding-top: 25px;
+  }
 }
 
 .base {
@@ -71,13 +76,17 @@ body {
   &._narrow {
     width: 37.5%;
   }
-
 }
 
 .title_holder {
+  @include transition_all(margin .3s);
   @extend %clearfix;
   line-height: 40px;
   margin-bottom: 30px;
+
+  .header-small .sticked_section & {
+    margin-bottom: 15px;
+  }
 }
 
 .title_controls {
@@ -92,10 +101,10 @@ body {
   @extend %translate3d;
 
   &.sticked {
-    
+
     #lock_currency_pairs:checked ~ & {
       position: fixed;
-      top: 0;
+      top: 50px;
       right: 0;
       left: 0;
       z-index: 10;
@@ -178,7 +187,6 @@ body {
       border-color: #dcdee3;
     }
   }
-
 }
 
 .pair_cell {

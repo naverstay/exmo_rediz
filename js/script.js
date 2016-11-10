@@ -1,9 +1,11 @@
-var ripple_effect = false, wnd, doc;
+var ripple_effect = false, wnd, doc, html, header;
 
 $(function ($) {
 
     wnd = $(window);
     doc = $(document);
+    html = $('html');
+    header = $('.header');
 
     $('body').delegate('.dropDowBtn', 'click', function () {
         var dd = $(this).closest('.dropDownHolder');
@@ -17,6 +19,10 @@ $(function ($) {
         var select_item = $(this), select_val = select_item.closest('.dropDownHolder').find('.dropDownVal');
 
         select_item.toggleClass('checked');
+
+        if (select_item.attr('data-click') != void 0) {
+            $(select_item.attr('data-click')).click();
+        }
 
         if (select_item.closest('.select_menu._single').length) {
             select_item.closest('.select_menu._single').find('.checked').not(select_item).removeClass('checked');
@@ -142,6 +148,9 @@ $(window).on('load', function () {
 function checkStickers() {
 
     var scrollTop = doc.scrollTop();
+    var scrollLeft = doc.scrollLeft();
+
+    html.toggleClass('header-small', scrollTop >= 50);
 
     $('.stickMe').each(function (ind) {
         var el = $(this), spacer = el.next('.stickSpacer');
@@ -161,7 +170,6 @@ function checkStickers() {
         }
     });
 
-    var scrollLeft = doc.scrollLeft();
 
     $('.sticked').css({
         'marginLeft': (scrollLeft > 0 ? -scrollLeft : 0),

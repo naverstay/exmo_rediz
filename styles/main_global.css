@@ -748,7 +748,8 @@ body { font: 14px/1.2 "GothamProRegular", sans-serif; color: #181818; min-width:
 
 .wrapper { position: relative; min-height: 100%; padding: 100px 0 0; }
 
-.main_content { padding: 50px 0; }
+.main_content { -webkit-transition: padding 0.3s; -ms-transition: padding 0.3s; transition: padding 0.3s; padding: 50px 0; }
+.header-small .main_content { padding-top: 25px; }
 
 .base { -webkit-box-flex: 1 0 auto; -moz-box-flex: 1 0 auto; -webkit-flex: 1 0 auto; -ms-flex: 1 0 auto; flex: 1 0 auto; }
 
@@ -757,11 +758,12 @@ body { font: 14px/1.2 "GothamProRegular", sans-serif; color: #181818; min-width:
 .col._wide { width: 61.5%; }
 .col._narrow { width: 37.5%; }
 
-.title_holder { line-height: 40px; margin-bottom: 30px; }
+.title_holder { -webkit-transition: margin 0.3s; -ms-transition: margin 0.3s; transition: margin 0.3s; line-height: 40px; margin-bottom: 30px; }
+.header-small .sticked_section .title_holder { margin-bottom: 15px; }
 
 .title_controls > li { float: left; padding-left: 8px; }
 
-#lock_currency_pairs:checked ~ .pair_sticker.sticked { position: fixed; top: 0; right: 0; left: 0; z-index: 10; background: #fff; }
+#lock_currency_pairs:checked ~ .pair_sticker.sticked { position: fixed; top: 50px; right: 0; left: 0; z-index: 10; background: #fff; }
 
 .pair_holder { overflow: hidden; }
 
@@ -809,8 +811,9 @@ body { font: 14px/1.2 "GothamProRegular", sans-serif; color: #181818; min-width:
 .pagination_list a.gl_link.current { cursor: default; }
 .pagination_list a.gl_link.current:before { -webkit-transform: translate(0, 0); -ms-transform: translate(0, 0); transform: translate(0, 0); opacity: 1; }
 
-.header { position: absolute; top: 0; right: 0; left: 0; line-height: 50px; padding: 25px 0; background: #488bfa; }
+.header { z-index: 11; position: fixed; top: 0; right: 0; left: 0; line-height: 50px; padding: 25px 0; background: #488bfa; }
 .header .section_inner { margin-bottom: 0; }
+.header-small .header { padding: 0; }
 
 .logo_block { float: left; padding-right: 55px; }
 
