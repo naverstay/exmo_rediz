@@ -1,4 +1,4 @@
-var ripple_effect = false, wnd, doc, html, header, dropDownTimer;
+var ripple_effect = false, wnd, doc, html, header, overlay, dropDownTimer;
 
 $(function ($) {
 
@@ -6,16 +6,41 @@ $(function ($) {
     doc = $(document);
     html = $('html');
     header = $('.header');
+    overlay = $('.overlay');
 
     checkStickers();
 
-    $('body').delegate('.chartExpandBtn', 'click', function () {
+    $('body').delegate('.pairBtn', 'click', function () {
+        $(this).toggleClass('_active');
+
+        return false;
+
+    }).delegate('.closePopup', 'click', function () {
+        var btn = $(this);
+
+        btn.closest('.popupContainer').hide();
+
+        overlay.hide();
+
+        return false;
+
+    }).delegate('.openPopup', 'click', function () {
+        var btn = $(this), popup = $(btn.attr('href'));
+
+        if (popup.length) {
+            popup.show().closest('.popupContainer').show();
+            overlay.show();
+        }
+
+        return false;
+
+    }).delegate('.chartExpandBtn', 'click', function () {
         var btn = $(this);
 
         // btn.toggleClass('_expanded');
 
         $('.chartSection').toggleClass('_expanded');
-        
+
         return false;
 
     }).delegate('.dropDowBtn', 'click', function () {
@@ -202,11 +227,11 @@ function checkStickers() {
     $('.stickSpacer').each(function (ind) {
         var spacer = $(this), el = spacer.find('.stickMe');
 
-        spacer.css('height', el.outerHeight());
+        spacer.css('height', el.height());
 
         // console.log(spacer.offset().top <= (scrollTop + headerHeight));
 
-        if (scrollTop > 75) {
+        if (scrollTop >= 50) {
             el.addClass('sticked').css('width', spacer.outerWidth());
         } else {
             el.removeClass('sticked').css({

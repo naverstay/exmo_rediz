@@ -262,5 +262,18 @@
     color: #858585;
     text-transform: none;
   }
+}
 
+.pair_settings {
+  @extend %clearfix;
+  margin-left: -12px;
+  padding: 26px 0 38px;
+  
+  li {
+    width: 20%;
+    float: left;
+    padding-left: 12px;
+    margin-bottom: 12px;
+  }
+  
 }

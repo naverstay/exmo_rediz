@@ -300,8 +300,31 @@ mixin footer()
                                 | <br>
                                 span 3405 now with us
                                 
-                                
-                                
 mixin popups()
     .overlay
-    .popup
+    .popup_container.popupContainer
+        .gl_table.text_center
+            .gl_table-cell
+                #pairs_popup.popup.popup-v1
+                    a.popup_close.closePopup(href='#')
+                    .popup_title Валютные пары
+                        
+                    p Настройте отображение нужных валютных пар
+                    
+                    ul.pair_settings
+                        li: a.btn_v1.pair_btn.btn_green.pairBtn._active(href='#') BTC/USD
+                        li: a.btn_v1.pair_btn.btn_green.pairBtn._active(href='#') BCT/EUR
+                        li: a.btn_v1.pair_btn.btn_green.pairBtn._active(href='#') BTC/RUB
+                        li: a.btn_v1.pair_btn.btn_green.pairBtn(href='#') DASH/USD
+                        +loop_while(8)
+                            li: a.btn_v1.pair_btn.btn_green._inactive.pairBtn(href='#') ETH/BTC
+                        
+                    ul.popup_controls
+                        li
+                            a.btn_v2.btn_gray.cancel_btn(href='#') Отменить
+                        li
+                            a.btn_v2.btn_blue_2.apply_btn(href='#') Сохранить
+                            
+                    p 
+                        a.gl_link.clr_gray_3.fz_14(href='#') Вернуть базовые настройки валютных пар
+                        

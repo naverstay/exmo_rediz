@@ -10,6 +10,17 @@
     padding: 5px 14px;
     font-size: 14px;
     line-height: 22px;
+    border-radius: 2px;
+  }
+
+  &.pair_btn {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding: 5px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
   }
 
 }
@@ -34,6 +45,26 @@
     border-radius: 2px;
     text-align: center;
     padding: 10px 24px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &.apply_btn {
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    text-align: center;
+    padding: 10px 30px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &.cancel_btn {
+    display: block;
+    width: 100%;
+    border-radius: 2px;
+    text-align: center;
+    padding: 10px 20px;
     font-size: 14px;
     line-height: 20px;
   }
@@ -111,7 +142,7 @@
     margin-bottom: 1px;
 
     .btn_icon {
-  
+
       &:before {
         font-size: 31px;
         line-height: 17px;
@@ -144,6 +175,37 @@
   line-height: 1.5;
 }
 
+.btn_green {
+  @include transition_all(background .3s, border .3s, color .3s);
+  border: 1px solid $green_2;
+  color: $green_2;
+  background: $white;
+
+  &:hover {
+    background: $green_2;
+    color: $white;
+  }
+
+  &._active {
+    color: $white;
+    background: $green_2;
+
+    &:hover {
+      background: $green_3;
+      border-color: $green_3;
+    }
+  }
+
+  &._inactive {
+    cursor: default;
+    pointer-events: none;
+    color: #ccced2;
+    background: #f5f7fa;
+    border-color: #f5f7fa;
+  }
+
+}
+
 .btn_white_blue {
   @include transition_all(background .3s);
   color: $default_t_color;
@@ -164,6 +226,17 @@
   @include transition_all(background .3s);
   background: $white;
   color: $default_t_color;
+
+  &:hover {
+    background: #fcfcfc;
+  }
+}
+
+.btn_gray {
+  @include transition_all(background .3s);
+  background: $white;
+  border: 1px solid #f5f7fa;
+  color: #ccced2;
 
   &:hover {
     background: #fcfcfc;
