@@ -1,4 +1,4 @@
-var ripple_effect = false, wnd, doc, html, header;
+var ripple_effect = false, wnd, doc, html, header, dropDownTimer;
 
 $(function ($) {
 
@@ -9,14 +9,53 @@ $(function ($) {
 
     checkStickers();
 
-    $('body').delegate('.dropDowBtn', 'click', function () {
+    $('body').delegate('.chartExpandBtn', 'click', function () {
+        var btn = $(this);
+
+        // btn.toggleClass('_expanded');
+
+        $('.chartSection').toggleClass('_expanded');
+        
+        return false;
+
+    }).delegate('.dropDowBtn', 'click', function () {
         var dd = $(this).closest('.dropDownHolder');
+
+        clearTimeout(dropDownTimer);
 
         hideDropDowns(dd);
 
-        dd.toggleClass('opened');
+        dd.addClass('opened');
 
         return false;
+
+    }).delegate('.dropDowBtn', 'mouseenter', function () {
+        var dd = $(this).closest('.dropDownHolder');
+
+        clearTimeout(dropDownTimer);
+
+        hideDropDowns(dd);
+
+        dd.addClass('opened');
+
+    }).delegate('.dropDownHolder', 'mouseleave', function () {
+
+        dropDownTimer = setTimeout(function () {
+            hideDropDowns();
+        }, 500);
+
+    }).delegate('.dropDownWrapper', 'mouseenter', function () {
+
+        $(this).closest('.dropDownHolder').addClass('hovered');
+
+    }).delegate('.dropDownWrapper', 'mouseleave', function () {
+
+        $(this).closest('.dropDownHolder').removeClass('hovered').trigger('mouseleave');
+
+        // dropDownTimer = setTimeout(function () {
+        //     hideDropDowns();
+        // }, 500);
+
     }).delegate('.selectBtn', 'click', function (e) {
         var select_item = $(this), select_val = select_item.closest('.dropDownHolder').find('.dropDownVal');
 
@@ -165,9 +204,9 @@ function checkStickers() {
 
         spacer.css('height', el.outerHeight());
 
-        console.log(spacer.offset().top <= (scrollTop + headerHeight));
-        
-        if (spacer.offset().top <= (scrollTop + headerHeight)) {
+        // console.log(spacer.offset().top <= (scrollTop + headerHeight));
+
+        if (scrollTop > 75) {
             el.addClass('sticked').css('width', spacer.outerWidth());
         } else {
             el.removeClass('sticked').css({
@@ -187,7 +226,7 @@ function checkStickers() {
 
 function hideDropDowns(exclude) {
 
-    $('.dropDownHolder').not(exclude).removeClass('opened');
+    $('.dropDownHolder').not(exclude).not('.hovered').removeClass('opened');
 
 }
 

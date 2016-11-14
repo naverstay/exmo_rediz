@@ -11,32 +11,33 @@ html(lang='ru')
 
                 div.main_content
                     input#lock_currency_pairs.input_hidden(type='checkbox' checked)
-                    .section_inner.sticked_section
-                        .title_holder
-                            .fl
-                                span.mb.block_tile Exchange
-                            .fr 
-                                ul.title_controls
-                                    li
-                                        .drop_down-holder.dropDownHolder
-                                            a.btn_v2.btn_blue_2.control_btn.dropDowBtn(href='#')
-                                                span.btn_icon.settings_icon
-                                            .drop_down-wrapper.dropDownWrapper._dd_left._dd_under._dd-w-215
-                                                ul.select_menu
-                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#double_value_pairs' href='#') 
-                                                        span.mb Double value pairs
-                                                    li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#lock_currency_pairs' href='#')
-                                                        span.mb Lock currency pairs <br> position on top
-                                                    li: a.select_btn.selectBtn.btn_white_gray(href='#') 
-                                                        span.mb Advanced Settings
-                                    li
-                                        a.btn_v2.btn_blue_2.control_btn(href='#')
-                                            //-span.btn_icon.trading_icon 
-                                            span.mb Advanced Trading 
-                                            
-                    //  Pairs
                         
                     .stickSpacer.stick_spacer: .pair_sticker.stickMe
+                        .section_inner.sticked_section
+                            .title_holder
+                                .fl
+                                    span.mb.block_tile Exchange
+                                .fr
+                                    ul.title_controls
+                                        li
+                                            .drop_down-holder.dropDownHolder
+                                                a.btn_v2.btn_blue_2.control_btn.dropDowBtn(href='#')
+                                                    span.btn_icon.settings_icon
+                                                .drop_down-wrapper.dropDownWrapper._dd_left._dd_under._dd-w-215
+                                                    ul.select_menu
+                                                        li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#double_value_pairs' href='#')
+                                                            span.mb Double value pairs
+                                                        li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#lock_currency_pairs' href='#')
+                                                            span.mb Lock currency pairs <br> position on top
+                                                        li: a.select_btn.selectBtn.btn_white_gray(href='#')
+                                                            span.mb Advanced Settings
+                                        li
+                                            a.btn_v2.btn_blue_2.control_btn(href='#')
+                                                //-span.btn_icon.trading_icon 
+                                                span.mb Advanced Trading 
+
+                        //  Pairs
+                            
                         .section_inner
                             .pair_holder
                                 input#double_value_pairs.input_hidden(type='checkbox' checked)
@@ -109,12 +110,11 @@ html(lang='ru')
                                             .pair_cell.pair_val-1 63.53
                                             .pair_cell.pair_val-2 63.53
                         
-                    .section_inner.clearfix
-                        .col._wide.fl
-                            .chart_holder._h-555.box_1
-                                img(src='i/chart_1.png')
+                    .section_inner.clearfix.chartSection.chart_section
+                        .col._wide.fl.chart_col
+                            +chart()
                                 
-                        .col._narrow.fr
+                        .col._narrow.fr.chat_col
                             +chat()
                             
                     // Orders section
@@ -527,3 +527,5 @@ html(lang='ru')
                             
 
             +footer()
+        
+        +popups()

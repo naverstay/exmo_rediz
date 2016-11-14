@@ -73,6 +73,57 @@
   }
 }
 
+.btn_v5 {
+  height: 27px;
+
+  &.settings_btn {
+    @include transition_all(color .3s);
+    display: block;
+    text-align: center;
+    padding: 0 9px;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 2px;
+    margin-bottom: 1px;
+
+    .btn_icon {
+      margin-right: 3px;
+
+      &:before {
+        font-size: 22px;
+        line-height: 16px;
+      }
+    }
+
+    &._active {
+      cursor: default;
+    }
+  }
+
+  &.expand_btn {
+    @include transition_all(color .3s);
+    display: block;
+    text-align: center;
+    padding: 0 7px;
+    font-size: 13px;
+    line-height: 30px;
+    border-radius: 2px;
+    margin-bottom: 1px;
+
+    .btn_icon {
+  
+      &:before {
+        font-size: 31px;
+        line-height: 17px;
+      }
+    }
+
+    &._active {
+      cursor: default;
+    }
+  }
+}
+
 .sh_icon {
   display: inline-block;
   vertical-align: middle;
@@ -97,16 +148,16 @@
   @include transition_all(background .3s);
   color: $default_t_color;
   background: $white;
-  
+
   &:hover {
     background: $blue_lighten;
     color: $white;
   }
 
-  &.checked {
-    background: $blue_lighten;
-    color: $white;
-  }
+  //&.checked {
+  //  background: $blue_lighten;
+  //  color: $white;
+  //}
 }
 
 .btn_white_gray {
@@ -152,6 +203,35 @@
   }
 }
 
+.btn_blue_3 {
+  @include transition_all(background .3s);
+  color: $white;
+  background: #5c97f8;
+
+  &:hover {
+    background: $blue_btn_hover;
+  }
+
+  &:active {
+    background: $blue_btn_active;
+  }
+}
+
+.btn_blue_4 {
+  @include transition_all(background .3s);
+  color: $white;
+  background-color: transparent;
+
+  &:hover {
+    background: #5c97f8;
+  }
+
+  &._active,
+  &:active {
+    background: #347ffb;
+  }
+}
+
 .btn_red {
   @include transition_all(background .3s, color .3s);
   color: $white;
@@ -168,15 +248,31 @@
   display: inline-block;
   vertical-align: middle;
   height: 20px;
-  margin-left: 12px;
+  //margin-left: 12px;
 
   &:first-child {
-    margin-left: 0;
-    margin-right: 12px;
+    //margin-left: 0;
+    //margin-right: 12px;
+  }
+
+  &.collapse_icon {
+    @extend %icon_pseudo;
+
+    &:before {
+      content: $i-chartsexpand;
+    }
+
+    ._expanded & {
+      &:before {
+        content: $i-chartsunexpand;
+      }
+    }
+
   }
 
   &.icon_drop_down {
     width: 18px;
+    margin-left: 12px;
     margin-right: -7px;
 
     &:before {
@@ -215,7 +311,10 @@
   }
 
   &.settings_icon {
-    margin: 0 -9px;
+
+    &:only-child {
+      margin: 0 -9px;
+    }
 
     &:before {
       content: $i-options;

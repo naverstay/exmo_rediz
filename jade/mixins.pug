@@ -72,32 +72,73 @@ mixin header(active)
                         span.mb Elon Musk
                         span.btn_icon.icon_drop_down
                         
-mixin chat()
-    .chat_holder._h-555.box_1
+mixin chart()
+    .chart_holder.box_1
         .chat_header
             .fl
-                span.fw_md.fz_14.text_upper Traders chat
+                span.fz_13.mb Время сервера 02:57
             .fr
-                a.soundBtn.btn_v4.sound_btn(href='#')
+                .mb
+                    ul.chart_controls
+                        li: a.btn_v5.btn_blue_4.settings_btn._active(href='#') День
+                        li: a.btn_v5.btn_blue_4.settings_btn(href='#') Неделя
+                        li: a.btn_v5.btn_blue_4.settings_btn(href='#') Месяц
+                        li: a.btn_v5.btn_blue_4.settings_btn(href='#') Год
+                        li: a.btn_v5.btn_blue_4.expand_btn.chartExpandBtn(href='#') 
+                            span.btn_icon.collapse_icon.btn_blue_4
+                            
+    
+        .chart_container._h-555
+            img(src='i/chart_1.png')
+                
+        .chart_footer
+            .fl 
+                .chart_footer-info.info_green Volume: 153 BTC / 6838466 RUB
+            .fr
+                .chart_footer-info.info_blue 44060.01321807 RUB
+                .chart_footer-info.info_red 44983.97507646 RUB
+
+mixin chat()
+    .chat_holder._h-555: .chat_w.box_3
+        input#chat_sound.input_hidden(type='checkbox' checked)
+        input#chat_auto_scroll.input_hidden(type='checkbox' checked)
+        .chat_header
+            .fl
+                span.fz_13.mb 784 пользователя онлайн
+            .fr
+                .drop_down-holder.dropDownHolder.mb
+                    a.btn_v5.btn_blue_3.settings_btn.dropDowBtn(href='#')
+                        span.btn_icon.settings_icon
+                        span Настройки чата
+                    .drop_down-wrapper.dropDownWrapper._dd_left-v1._dd_under-v3._dd-w-200
+                        ul.select_menu
+                            li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#chat_sound' href='#')
+                                span.mb Звук уведомлений
+                            li: a.select_btn.selectBtn._check.checked.btn_white_blue(data-check='#chat_auto_scroll' href='#')
+                                span.mb Автопрокрутка чата
+                            li: a.select_btn.selectBtn._disabled.btn_white_blue(href='#')
+                                span.mb Неактивное состояние
+                                
+                //-a.soundBtn.btn_v4.sound_btn(href='#')
                     span.fz_12.btn_icon.sound_icon
                     //-span.fz_12 Sound notifications
 
         .chat_content.customScroll.scroll-v1
             .chat_msg_list
                 +loop_while(2)
-                    .msg_unit
+                    .msg_unit: .msg_unit_inner
                         span.msg_user_name
-                            span.clr_green Elon Mask: 
+                            span.__clr_green Elon Mask: 
                                         
                         span.msg_text Нам очень нужен специалист по контактам с внеземными цивилизациями. Есть кто свободный?
 
-                    .msg_unit
-                        span.msg_user_name.clr_blue_lighten NASA: 
+                    .msg_unit: .msg_unit_inner
+                        span.msg_user_name.__clr_blue_lighten NASA: 
                         span.msg_text.fw_md Илон, спроси у Марка. Он вроде как свободен сейчас.
 
-                    .msg_unit
+                    .msg_unit: .msg_unit_inner
                         span.msg_user_name.dropDownHolder
-                            span.clr_blue_lighten.dropDowBtn Mark Watney: 
+                            span.__clr_blue_lighten.dropDowBtn Mark Watney: 
                             .drop_down-wrapper.dropDownWrapper._dd_left._dd_under._dd-w-215
                                 ul.select_menu
                                     li: a.select_btn.selectBtn.btn_white_blue(href='#')
@@ -109,26 +150,26 @@ mixin chat()
                                         
                         span.msg_text Отвалите все! Меня уже однажды забыли на Марсе
 
-                    .msg_unit._warning
-                        span.msg_user_name.clr_red Галактический сенат:  
+                    .msg_unit._warning: .msg_unit_inner
+                        span.msg_user_name.__clr_red Галактический сенат:  
                         span.msg_text Пользователь NASA заблокирован. Срок блокировки — 10 лет стандартного галактического времени.
 
-                    .msg_unit
-                        span.msg_user_name.clr_green Elon Mask: 
+                    .msg_unit: .msg_unit_inner
+                        span.msg_user_name.__clr_green Elon Mask: 
                         span.msg_text Нам очень нужен специалист по контактам с внеземными цивилизациями. Есть кто свободный?
 
-                    .msg_unit
-                        span.msg_user_name.clr_blue_lighten NASA: 
+                    .msg_unit: .msg_unit_inner
+                        span.msg_user_name.__clr_blue_lighten NASA: 
                         span.msg_text.fw_md Илон, спроси у Марка. Он вроде как свободен сейчас.
 
-                    .msg_unit
-                        span.msg_user_name.clr_blue_lighten Mark Watney: 
+                    .msg_unit: .msg_unit_inner
+                        span.msg_user_name.__clr_blue_lighten Mark Watney: 
                         span.msg_text Отвалите все! Меня уже однажды забыли на Марсе
 
         .chat_footer
             form(action='#')
                 .form_cell
-                    input.f_input.f_input-v1
+                    input.f_input.f_input-v1(placeholder='Введите текст сообщения')
                     button.msg_btn
 
 mixin glass()
@@ -260,3 +301,7 @@ mixin footer()
                                 span 3405 now with us
                                 
                                 
+                                
+mixin popups()
+    .overlay
+    .popup

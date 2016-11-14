@@ -15,15 +15,17 @@ $blue_light_3: #2b8af1;
 $blue_light_4: #9dbdfe;
 $blue: #3261af;
 $blue_dark: #23447a;
+$blue_dark_2: #347ffb;
 
-$blue_btn : #488bfa;
-$blue_btn_hover : #4897ff;
-$blue_btn_active : #4080ff;
+$blue_btn: #488bfa;
+$blue_btn_hover: #4897ff;
+$blue_btn_active: #4080ff;
 
 $green: #00bf89;
 
 $pink_light: #f5dfe9;
 $pink: #ff7ca8;
+$pink_dark: #f64983;
 
 $red_light: #f40856;
 $red: #ff085a;
@@ -62,7 +64,7 @@ $cross_font_TrebuchetMS: 'Trebuchet MS', 'Helvetica CY', sans-serif;
 $cross_font_Verdana: Verdana, 'Geneva CY', 'DejaVu Sans', sans-serif;
 
 $default_t_color: #181818;
-$placeholder_color: #ccc;
+$placeholder_color: #ccced2;
 
 @mixin opacity($val : 1, $important : 0) {
   @if $important == 0 {
@@ -1018,6 +1020,16 @@ $placeholder_color: #ccc;
   white-space: nowrap;
   text-indent: 100%;
   overflow: hidden;
+}
+
+@mixin peplaceholder($color : #ccc) {
+  &::-webkit-input-placeholder{
+    color: $color;
+  }
+
+  &::-moz-placeholder {
+    color: $color;
+  }
 }
 
 @mixin dashed-border($dashlength, $spacelength, $borderwidth, $color) {

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'exmo_icons';
-  src:  url('fonts/exmo_icons.eot?26afp6');
-  src:  url('fonts/exmo_icons.eot?26afp6#iefix') format('embedded-opentype'),
-    url('fonts/exmo_icons.ttf?26afp6') format('truetype'),
-    url('fonts/exmo_icons.woff?26afp6') format('woff'),
-    url('fonts/exmo_icons.svg?26afp6#exmo_icons') format('svg');
+  src:  url('fonts/exmo_icons.eot?93m1ug');
+  src:  url('fonts/exmo_icons.eot?93m1ug#iefix') format('embedded-opentype'),
+    url('fonts/exmo_icons.ttf?93m1ug') format('truetype'),
+    url('fonts/exmo_icons.woff?93m1ug') format('woff'),
+    url('fonts/exmo_icons.svg?93m1ug#exmo_icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.i-location2:before {
+  content: "\e912";
+}
+.i-chartsunexpand:before {
+  content: "\e914";
+}
+.i-photosecure2:before {
+  content: "\e915";
+}
+.i-chartsexpand:before {
+  content: "\e913";
+}
+.i-chatsendbutton:before {
+  content: "\e910";
+}
+.i-close2:before {
+  content: "\e911";
+}
 .i-chat_refresh:before {
   content: "\e900";
 }

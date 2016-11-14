@@ -28,6 +28,7 @@
     padding-right: 32px;
 
     &:before {
+      @include transition_all(color .3s);
       display: none;
       content: $i-checkmark2;
       position: absolute;
@@ -35,7 +36,7 @@
       height: 22px;
       right: 14px;
       //color: $blue_lighten;
-      color: $white;
+      color: $blue_lighten;
       font-size: 26px;
       line-height: 22px;
       margin-top: -11px;
@@ -50,10 +51,24 @@
     }
   }
 
+  &:hover {
+    //background: $blue_lighten;
+    //color: $white;
+
+    &:before {
+      color: $white;
+    }
+  }
+
   &._disabled {
     cursor: default;
     background: $white;
     color: #ccced2;
+
+    &:hover {
+      color: #ccced2;
+      background: #fcfcfc;
+    }
   }
 }
 
@@ -62,23 +77,30 @@
 }
 
 .drop_down-wrapper {
+  @include transition_all(transform .5s .4s cubic-bezier(.19, 1, .22, 1), opacity .5s .4s cubic-bezier(.19, 1, .22, 1));
+  @include transform_scale(.95);
   z-index: 5;
-  display: none;
   position: absolute;
   background: #f5f5f5;
   border-radius: 2px;
   box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
   &:after,
   &:before {
-    content: '';
+    //content: '';
     position: absolute;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
   }
 
   .opened > & {
-    display: block;
+    @include transform_scale(1);
+    visibility: visible;
+    pointer-events: all;
+    opacity: 1;
   }
 
   &._dd-w-252 {
@@ -89,13 +111,17 @@
     width: 215px;
   }
 
+  &._dd-w-200 {
+    width: 200px;
+  }
+
   &._dd-w-115 {
     width: 115px;
   }
 
   &._dd_under {
     top: 100%;
-    margin-top: 16px;
+    margin-top: 8px;
 
     &:after {
       bottom: 100%;
@@ -125,8 +151,36 @@
     }
   }
 
+  &._dd_under-v3 {
+    top: 100%;
+    margin-top: -1px;
+
+    &:after {
+      bottom: 100%;
+      border-bottom: 5px solid #f5f5f5;
+    }
+
+    &:before {
+      bottom: 100%;
+      margin-bottom: 1px;
+      border-bottom: 5px solid rgba(0, 0, 0, .3);
+    }
+  }
+
   &._dd_left {
     left: 0;
+
+    &:before {
+      left: 20px;
+    }
+
+    &:after {
+      left: 20px;
+    }
+  }
+
+  &._dd_left-v1 {
+    left: -7px;
 
     &:before {
       left: 20px;
@@ -265,12 +319,12 @@
   width: 100%;
 
   &.f_input-v1 {
-    height: 44px;
-    border-radius: 5px;
+    //@include peplaceholder(#ccced2);
+    height: 45px;
     font: 13px/14px $GothamProRegular;
-    padding: 14px 14px 14px 44px;
+    padding: 14px 50px 14px 14px;
     background: $white;
-    border: 1px solid #dce2e6;
+    border: 1px solid #d9dcde;
     color: $black;
   }
 
