@@ -132,10 +132,20 @@ $rectWidth: $content-max-w - 20;
 // **********  text
 
 .gl_link {
-
+  @include transition_all(color .3s);
+  
   &.white_link {
     color: $white;
   }
+
+  &.gray_link {
+    color: #ccced2;
+    
+    &:hover {
+      color: $default_t_color;
+    }
+  }
+
 }
 
 .block_tile {

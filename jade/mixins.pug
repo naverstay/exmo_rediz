@@ -107,7 +107,7 @@ mixin chat()
                 span.fz_13.mb 784 пользователя онлайн
             .fr
                 .drop_down-holder.dropDownHolder.mb
-                    a.btn_v5.btn_blue_3.settings_btn.dropDowBtn(href='#')
+                    a.btn_v5.btn_blue_4.settings_btn.dropDowBtn(href='#')
                         span.btn_icon.settings_icon
                         span Настройки чата
                     .drop_down-wrapper.dropDownWrapper._dd_left-v1._dd_under-v3._dd-w-200
@@ -168,8 +168,8 @@ mixin chat()
 
         .chat_footer
             form(action='#')
-                .form_cell
-                    input.f_input.f_input-v1(placeholder='Введите текст сообщения')
+                .form_cell.empty
+                    input.f_input.f_input-v1.checkEmpty(placeholder='Введите текст сообщения')
                     button.msg_btn
 
 mixin glass()
@@ -312,19 +312,15 @@ mixin popups()
                     p Настройте отображение нужных валютных пар
                     
                     ul.pair_settings
-                        li: a.btn_v1.pair_btn.btn_green.pairBtn._active(href='#') BTC/USD
-                        li: a.btn_v1.pair_btn.btn_green.pairBtn._active(href='#') BCT/EUR
-                        li: a.btn_v1.pair_btn.btn_green.pairBtn._active(href='#') BTC/RUB
-                        li: a.btn_v1.pair_btn.btn_green.pairBtn(href='#') DASH/USD
+                        li: a.btn_v1.pair_btn.btn_green_gray.pairBtn._active(href='#') BTC/USD
+                        li: a.btn_v1.pair_btn.btn_green_gray.pairBtn._active(href='#') BCT/EUR
+                        li: a.btn_v1.pair_btn.btn_green_gray.pairBtn._active(href='#') BTC/RUB
+                        li: a.btn_v1.pair_btn.btn_green_gray.pairBtn(href='#') DASH/USD
                         +loop_while(8)
-                            li: a.btn_v1.pair_btn.btn_green._inactive.pairBtn(href='#') ETH/BTC
+                            li: a.btn_v1.pair_btn.btn_green_gray._inactive.pairBtn(href='#') ETH/BTC
                         
                     ul.popup_controls
-                        li
-                            a.btn_v2.btn_gray.cancel_btn(href='#') Отменить
-                        li
-                            a.btn_v2.btn_blue_2.apply_btn(href='#') Сохранить
-                            
-                    p 
-                        a.gl_link.clr_gray_3.fz_14(href='#') Вернуть базовые настройки валютных пар
-                        
+                        li.fl
+                            a.gl_link.gray_link.fz_14.mb(href='#') Вернуть базовые настройки валютных пар
+                        li.fr
+                            a.btn_v2.btn_blue_2.apply_btn.applyBtn(href='#' disabled) Сохранить

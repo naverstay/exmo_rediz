@@ -10,8 +10,17 @@ $(function ($) {
 
     checkStickers();
 
+    var el = $('.checkEmpty');
+
+    var e = 'keyup,keypress,focus,blur,change'.split(',');
+    for (var i in e) el.on(e[i], function () {
+        var inp = $(this);
+        console.log(inp.val());
+        inp.parent().toggleClass('empty', !inp.val());
+    });
+
     $('body').delegate('.pairBtn', 'click', function () {
-        $(this).toggleClass('_active');
+        $(this).toggleClass('_active').closest('.popup').find('.applyBtn').attr('disabled', null);
 
         return false;
 
@@ -50,20 +59,26 @@ $(function ($) {
 
         hideDropDowns(dd);
 
-        dd.addClass('opened');
+        dd.toggleClass('opened');
 
         return false;
 
-    }).delegate('.dropDowBtn', 'mouseenter', function () {
-        var dd = $(this).closest('.dropDownHolder');
+    }).delegate('.dropDownHolder', 'mouseenter', function () {
+        var dd = $(this).addClass('move');
 
-        clearTimeout(dropDownTimer);
+        setTimeout(function () {
+            if (dd.hasClass('move')) {
+                clearTimeout(dropDownTimer);
 
-        hideDropDowns(dd);
+                hideDropDowns(dd);
 
-        dd.addClass('opened');
+                dd.addClass('opened');
+            }
+
+        }, 500);
 
     }).delegate('.dropDownHolder', 'mouseleave', function () {
+        $(this).removeClass('move');
 
         dropDownTimer = setTimeout(function () {
             hideDropDowns();

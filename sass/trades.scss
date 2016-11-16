@@ -28,7 +28,7 @@
   right: 0;
   left: 0;
   height: 46px;
-  padding: 6px 13px;
+  padding: 10px 13px 9px;
   background: transparentize(#f5f7fa, .1);
 
   &-info {
@@ -38,7 +38,7 @@
     height: 27px;
     padding: 0 10px;
     font-size: 13px;
-    line-height: 27px;
+    line-height: 29px;
     border-radius: 2px;
 
     &.info_green {
@@ -157,6 +157,7 @@
 }
 
 .msg_btn {
+  @include transition_all(color .3s);
   @extend %icon_pseudo;
   position: absolute;
   right: 0;
@@ -165,7 +166,7 @@
   width: 48px;
   background: none;
   text-align: center;
-  color: #7eadfb;
+  color: #d9dcde;
 
   &:before {
     position: absolute;
@@ -179,6 +180,13 @@
     content: $i-chatsendbutton;
   }
 
+  &:hover {
+    color: #7eadfb;
+  }
+
+  .empty & {
+    display: none;
+  }
 }
 
 .tab_switcher {
@@ -267,13 +275,13 @@
 .pair_settings {
   @extend %clearfix;
   margin-left: -12px;
-  padding: 26px 0 38px;
-  
+  padding: 26px 0 75px;
+
   li {
     width: 20%;
     float: left;
     padding-left: 12px;
     margin-bottom: 12px;
   }
-  
+
 }

@@ -10,7 +10,6 @@
     padding: 5px 14px;
     font-size: 14px;
     line-height: 22px;
-    border-radius: 2px;
   }
 
   &.pair_btn {
@@ -175,35 +174,28 @@
   line-height: 1.5;
 }
 
-.btn_green {
+.btn_green_gray {
   @include transition_all(background .3s, border .3s, color .3s);
-  border: 1px solid $green_2;
-  color: $green_2;
-  background: $white;
+  border: 1px solid #f5f7fa;
+  color: #ccced2;
+  background: #f5f7fa;
 
   &:hover {
-    background: $green_2;
-    color: $white;
+    color: $green_2;
+    background: $white;
+    //background: $green_2;
   }
 
   &._active {
     color: $white;
     background: $green_2;
+    border-color: $green_2;
 
     &:hover {
       background: $green_3;
       border-color: $green_3;
     }
   }
-
-  &._inactive {
-    cursor: default;
-    pointer-events: none;
-    color: #ccced2;
-    background: #f5f7fa;
-    border-color: #f5f7fa;
-  }
-
 }
 
 .btn_white_blue {
@@ -279,10 +271,11 @@
 .btn_blue_3 {
   @include transition_all(background .3s);
   color: $white;
-  background: #5c97f8;
+  background: transparent;
 
   &:hover {
-    background: $blue_btn_hover;
+    //background: $blue_btn_hover;
+    background: #5c97f8;
   }
 
   &:active {
@@ -378,7 +371,7 @@
 
     &:before {
       font-size: 24px;
-      line-height: 24px;
+      line-height: 22px;
       content: $i-email;
     }
   }
@@ -417,19 +410,18 @@
     margin-right: 4px;
 
     &:before {
-      content: $i-close;
+      content: $i-close2;
       font-size: 16px;
       line-height: 18px;
       font-weight: 600;
     }
   }
-
 }
 
 .msg_status {
   @include transition_all(background .3s, border .3s);
   position: absolute;
-  top: 9px;
+  top: 7px;
   right: 6px;
   z-index: 1;
   border-radius: 100%;
